@@ -1,0 +1,22 @@
+function arrayMaxConsecutiveSum(inputArray, k) {
+    let maxSum = 0;
+    
+    // Compute sum of first window of size k 
+    for(let i = 0;i < k;i++){
+        maxSum += inputArray[i];
+    }
+    
+    let windowSum = maxSum;
+    
+    // Compute sums of remaining windows by 
+    // removing first element of previous 
+    // window and adding last element of 
+    // current window. 
+    for(let i = k;i < inputArray.length;i++){
+        windowSum += inputArray[i] - inputArray[i-k];
+        maxSum = Math.max(maxSum,windowSum);
+        
+    }
+    
+    return maxSum;
+}
